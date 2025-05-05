@@ -115,70 +115,47 @@ const Nav: React.FC<NavProps> = ({ logo, subPages = [] }) => {
     }, 1000);
   };
 
-  // Main navigation container styles
-  const navClasses = [
-    'fixed', 
-    'top-0', 
-    'left-0', 
-    'w-full', 
-    'h-16', // Assuming --nav-height is 4rem/h-16
-    'flex', 
-    'items-center', 
-    'px-[5%]', // padding: 0 5%
-    'border-b', 
-    'border-gray-200', // Assuming --stroke maps to this
-    'bg-white', // Assuming --background-color
-    'z-50', // Assuming z-index: 100
-  ].join(' ');
-
-  // Inner container for logo and title
-  const innerDivClasses = 'relative flex flex-row items-center';
-
-  // Logo image styles
-  const logoClasses = 'h-full max-h-10 object-contain'; // Adjust max-h-10 as needed
-
-  // Divider line styles
-  const lineClasses = 
-    'w-px h-8 bg-gray-200 mx-4'; // Assuming --stroke-width: 1px, height calc, --stroke-color, margin
-
   // Sidebar navigation styles - improved sticky positioning
   const sidebarClasses = 'sticky top-20 flex flex-col space-y-4 h-full max-h-[calc(100vh-6rem)] overflow-y-auto pr-2';
 
   return (
     <>
-      {/* Top Navigation Bar */}
-
-
       {/* Side Navigation for SubPages */}
       <div className={sidebarClasses}>
         {subPages?.length > 0 && (
-          <nav className="space-y-2">
-            <h3 className="font-semibold text-lg mb-3">Innhold</h3>
-            {subPages.map((subPage, index) => {
-              if (!subPage.title) return null;
-              
-              const sectionKey = subPage._key || subPage.title.replace(/\s+/g, '-').toLowerCase();
-              const sectionId = `section-${sectionKey}`;
-              const isActive = activeSection === sectionKey;
-              
-              return (
-                <Link
-                  key={sectionKey || index}
-                  href={`${pathname}#${sectionId}`}
-                  className={`block w-full text-left px-4 py-2 rounded-md transition-colors duration-200 flex items-center ${
-                    isActive 
-                      ? 'bg-blue-100 text-blue-800 font-medium' 
-                      : 'hover:bg-gray-100 text-gray-700'
-                  }`}
-                  onClick={() => handleNavClick(sectionKey)}
-                >
-                  <span className="inline-flex justify-center items-center w-6 h-6 rounded-full bg-gray-200 text-gray-800 text-xs font-medium mr-3">
-                    {index + 1}
-                  </span>
-                  <span className="flex-1">{subPage.title}</span>
-                </Link>
-              );
-            })}
+          <nav className="space-y-3">
+            <h3 className="font-light text-lg mb-4 uppercase tracking-normal font-[Aker_Brygge_Display]">Innhold</h3>
+            <div className="space-y-2 border-l border-black pl-3">
+              {subPages.map((subPage, index) => {
+                if (!subPage.title) return null;
+                
+                const sectionKey = subPage._key || subPage.title.replace(/\s+/g, '-').toLowerCase();
+                const sectionId = `section-${sectionKey}`;
+                const isActive = activeSection === sectionKey;
+                
+                return (
+                  <Link
+                    key={sectionKey || index}
+                    href={`${pathname}#${sectionId}`}
+                    className={`block w-full text-left px-3 py-2 transition-colors duration-200 flex items-center ${
+                      isActive 
+                        ? 'text-[#3A66F8] font-normal' 
+                        : 'hover:text-[#3A66F8] text-black'
+                    }`}
+                    onClick={() => handleNavClick(sectionKey)}
+                  >
+                    <span className={`inline-flex justify-center items-center w-6 h-6 rounded-full ${
+                      isActive 
+                        ? 'bg-[#3A66F8] text-white' 
+                        : 'bg-[#EFE3D3] text-black'
+                    } text-xs font-normal mr-3`}>
+                      {index + 1}
+                    </span>
+                    <span className="flex-1">{subPage.title}</span>
+                  </Link>
+                );
+              })}
+            </div>
           </nav>
         )}
       </div>

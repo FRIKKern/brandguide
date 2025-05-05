@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Stick_No_Bills, Barlow_Condensed, Tomorrow } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { cn } from "@/features/unorganized-utils/utils";
 import { ThemeProvider } from "@/features/theme/theme-provider";
@@ -31,23 +31,22 @@ export const metadata: Metadata = {
   robots: "index, follow",
 };
 
-// Import 3 fonts with custom CSS variable names
-const titleFont = Stick_No_Bills({
-  subsets: ["latin"],
-  weight: ["600", "800"],
-  variable: "--font-title",
-});
-
-const generalFont = Barlow_Condensed({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-general",
-});
-
-const supplementFont = Tomorrow({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-supplement",
+// Import Aker Brygge Display font for headings
+const akerBryggeFont = localFont({
+  src: [
+    {
+      path: '../public/fonts/akerbryggedisplay-webfont.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/akerbryggedisplay-webfont.woff',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-aker-brygge',
+  display: 'swap',
 });
 
 export default function RootLayout({
@@ -62,9 +61,7 @@ export default function RootLayout({
         <body
           className={cn(
             "min-h-screen bg-background font-sans antialiased overscroll-none",
-            titleFont.variable,
-            generalFont.variable,
-            supplementFont.variable
+            akerBryggeFont.variable
           )}
         >
           {/* Render the main page content */}

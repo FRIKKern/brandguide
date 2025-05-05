@@ -23,7 +23,7 @@ const Image: React.FC<ImageProps> = ({ node, image: imageProp, width = 2000 }) =
   const uniqueKey = image._key || `image-${new Date().getTime()}-${Math.random().toString(36).substr(2, 9)}`;
 
   // Enhanced styling for better presentation
-  const imageClasses = "w-full my-8 rounded-lg shadow-md"; 
+  const imageClasses = "w-full my-8 rounded-lg border border-[#00000010] "; 
 
   // Handle SVG images directly by URL
   if (image.asset.extension === "svg") {

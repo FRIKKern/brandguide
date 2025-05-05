@@ -39,19 +39,19 @@ const ptComponents: PortableTextComponents = {
   marks: {
     // Define any custom mark components here if needed
     link: ({children, value}) => (
-      <a href={value?.href} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
+      <a href={value?.href} className="text-[#3A66F8] hover:underline" target="_blank" rel="noopener noreferrer">
         {children}
       </a>
     ),
   },
   block: {
     // Override default block rendering for better spacing and hierarchy
-    h1: ({children}) => <h1 className="text-4xl font-bold mt-12 mb-6">{children}</h1>,
-    h2: ({children}) => <h2 className="text-3xl font-bold mt-10 mb-4">{children}</h2>,
-    h3: ({children}) => <h3 className="text-2xl font-semibold mt-8 mb-3">{children}</h3>,
-    h4: ({children}) => <h4 className="text-xl font-semibold mt-6 mb-2">{children}</h4>,
-    h5: ({children}) => <h5 className="text-lg font-medium mt-5 mb-2">{children}</h5>,
-    h6: ({children}) => <h6 className="text-base font-medium mt-4 mb-2">{children}</h6>,
+    h1: ({children}) => <h1 className="text-4xl font-light mt-12 mb-6 uppercase tracking-normal">{children}</h1>,
+    h2: ({children}) => <h2 className="text-3xl font-light mt-10 mb-4 uppercase tracking-normal">{children}</h2>,
+    h3: ({children}) => <h3 className="text-2xl font-light mt-8 mb-3 uppercase tracking-normal">{children}</h3>,
+    h4: ({children}) => <h4 className="text-xl font-light mt-6 mb-2 uppercase tracking-normal">{children}</h4>,
+    h5: ({children}) => <h5 className="text-lg font-normal mt-5 mb-2">{children}</h5>,
+    h6: ({children}) => <h6 className="text-base font-normal mt-4 mb-2">{children}</h6>,
     normal: ({children}) => <p className="mb-6 leading-relaxed">{children}</p>,
     blockquote: ({children}) => (
       <blockquote className="pl-4 border-l-4 border-gray-300 italic my-6">
@@ -78,7 +78,7 @@ const BlockContent: React.FC<BlockContentProps> = ({ blocks }) => {
   }
 
   // Container with enhanced styling for better readability
-  const containerClasses = "max-w-4xl mx-auto prose lg:prose-xl dark:prose-invert"; 
+  const containerClasses = "max-w-4xl prose lg:prose-xl prose-headings:font-light prose-headings:tracking-normal prose-headings:uppercase prose-headings:font-[Aker_Brygge_Display] prose-a:text-[#3A66F8]"; 
 
   return (
     <div className="py-8">

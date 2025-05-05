@@ -19,7 +19,7 @@ const BrandGuideContent: React.FC<BrandGuideContentProps> = ({ subPages }) => {
   }
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-16">
       {subPages.map((subPage, index) => {
         if (!subPage?.components || !Array.isArray(subPage.components) || subPage.components.length === 0) {
           return null;
@@ -42,8 +42,8 @@ const BrandGuideContent: React.FC<BrandGuideContentProps> = ({ subPages }) => {
         const sectionId = `section-${subPage._key || subPage.title?.replace(/\s+/g, '-').toLowerCase()}`;
 
         return (
-          <section key={sectionId} id={sectionId} className=" pt-4">
-   
+          <section key={sectionId} id={sectionId} className="">
+
             <BlockContent blocks={processedComponents} />
           </section>
         );

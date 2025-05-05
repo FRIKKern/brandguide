@@ -1,0 +1,115 @@
+---
+description: Learning about the brandprofile
+globs: 
+alwaysApply: false
+---
+<!-- Aker Brygge Brand Guide – Markdown Component (.mdc) -->
+
+# Aker Brygge · Colors & Typography
+
+---
+## 1 · Core Typefaces
+
+| Purpose | Typeface | Notes |
+|---------|----------|-------|
+| **Display Headlines**<br>(Blue & Yellow audiences) | **Aker Brygge Display** | Custom serif; uppercase only; use for H1–H4 and hero words. Never in body copy. |
+| **Display Headlines**<br>(Red audience) | **Studio Pro Bold / Black** | Use instead of Display to differentiate trend‑focused content. |
+| **Body & Sub‑heads** | **Studio Pro Regular / Bold / Italic** | Clean humanist sans; five weights available. Regular + Italic cover 90 % of copy. |
+
+> **Licensing** – Aker Brygge Display is provided internally. *Studio Pro* must be licensed by third‑party users (see PDF licence in the asset pack).
+
+### Hierarchy Rules
+1. Never skip heading levels (H1 → H3).<br>2. Uppercase for all Aker Brygge Display headings.<br>3. Sub‑heads (Subtitle 1 / 2) use Studio Pro Bold, Sentence case.<br>4. Body copy: 16 px / 1.6 em line‑height (Body 1), 14 px for small print (Body 2).
+
+---
+## 2 · Colour System
+
+### 2.1 Primary Palette
+| Name | Hex | WCAG* AA large | WCAG AAA large |
+|------|-----|----------------|-----------------|
+| **Sand** | `#EFE3D3` | ✓ on #3A66F8 | – |
+| **Black** | `#000000` | ✓ on #EFE3D3 | ✓ on #EFE3D3 |
+| **White** | `#FFFFFF` | ✓ on #3A66F8 | ✓ on #3A66F8 |
+| **Blue** | `#3A66F8` | ✓ on #FFFFFF / Sand | ✓ on #FFFFFF |
+
+### 2.2 Support Palette
+| Name | Hex | Suggested Use |
+|------|-----|---------------|
+| **Orange** | `#DB5526` | Accent for Red audience, calls‑to‑action |
+| **Pink**   | `#E94465` | Lifestyle highlights, seasonal campaigns |
+| **Purple** | `#872EEC` | Cultural / art content |
+| **Green**  | `#408F81` | Sustainability, outdoor |
+| **Yellow** | `#DFBC50` | Holiday / family content |
+
+> *WCAG:* aim for **4.5 : 1** contrast ratio for normal text and **3 : 1** for large text (18 px regular / 14 px bold).
+
+#### Contrast Tips
+* Pair **Blue** text on **Sand** or **White** for maximum brand recognition.
+* Reserve **Black** text for long‑form copy to maximise legibility.
+* Avoid Orange on Sand – fails AA.
+
+### 2.3 Colour Weighting by Audience
+* **Blue & Yellow audiences** – Blue dominates; Sand or White backgrounds; support colours sparingly.
+* **Red audience** – Freer use of full spectrum, with Orange as the hero accent.
+
+---
+## 3 · Do & Don’t
+| Do | Don’t |
+|----|-------|
+| Use Aker Brygge Display only for short, punchy headlines. | Use Display in paragraphs or small sizes. |
+| Check contrast with WCAG calculator before finalising artwork. | Place Orange text on Sand or Yellow background. |
+| Stick to two, max three colours per layout. | Rainbow layouts – dilute brand recognition. |
+
+---
+## 4 · Tailwind CSS Design Tokens
+
+```css
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+/* Aker Brygge Display font */
+@font-face {
+  font-family: 'Aker Brygge Display';
+  src: url('/fonts/akerbryggedisplay-webfont.woff2') format('woff2');
+  font-display: swap;
+}
+
+:root {
+  /* Core palette */
+  --color-sand: #EFE3D3;
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-blue: #3A66F8;
+
+  /* Support colours */
+  --color-orange: #DB5526;
+  --color-pink:   #E94465;
+  --color-purple: #872EEC;
+  --color-green:  #408F81;
+  --color-yellow: #DFBC50;
+
+  /* Semantic tokens */
+  --background: var(--color-sand);
+  --foreground: var(--color-black);
+  --primary:     var(--color-blue);
+  --accent:      var(--color-orange);
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: var(--color-black);
+  --foreground: var(--color-sand);
+}
+
+@layer base {
+  h1, h2, h3, h4 {
+    font-family: 'Aker Brygge Display', serif;
+    text-transform: uppercase;
+  }
+  body {
+    font-family: var(--font-studio-pro, ui-sans-serif);
+    background: var(--background);
+    color: var(--foreground);
+  }
+}
+```

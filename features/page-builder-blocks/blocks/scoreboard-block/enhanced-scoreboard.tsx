@@ -264,7 +264,7 @@ export default function EnhancedScoreboard({
                     key={participant._id}
                     className={`bg-white rounded-lg border ${
                       isOptimisticParticipant(participant) 
-                        ? 'border-blue-200 shadow-md animate-pulse' 
+                        ? 'border-blue-200 border border-[#00000010]  animate-pulse' 
                         : 'border-gray-200'
                     } p-4 transition-all duration-200`}
                   >

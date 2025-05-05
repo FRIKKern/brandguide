@@ -36,7 +36,7 @@ const ColorDisplay: React.FC<ColorProps> = ({ name, hex }) => {
     'border', 
     'border-gray-200', // Assuming --stroke
     'overflow-hidden',
-    useWhiteText ? 'text-white' : 'text-black' // Conditional text color based on contrast
+    useWhiteText ? 'text-black' : 'text-black' // Conditional text color based on contrast
   ].join(' ');
 
   return (

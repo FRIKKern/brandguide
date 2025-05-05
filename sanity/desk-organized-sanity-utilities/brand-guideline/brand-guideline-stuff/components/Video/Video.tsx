@@ -34,7 +34,7 @@ const Video: React.FC<VideoProps> = ({ url }) => {
   const youtubeId = extractYouTubeId(url);
   if (youtubeId) {
     return (
-      <div className="aspect-video rounded-lg overflow-hidden shadow-md">
+      <div className="aspect-video rounded-lg overflow-hidden border border-[#00000010] ">
         <iframe
           src={`https://www.youtube.com/embed/${youtubeId}?autoplay=0&mute=0&controls=1&rel=0`}
           title="YouTube video player"
@@ -51,7 +51,7 @@ const Video: React.FC<VideoProps> = ({ url }) => {
   const vimeoId = extractVimeoId(url);
   if (vimeoId) {
     return (
-      <div className="aspect-video rounded-lg overflow-hidden shadow-md">
+      <div className="aspect-video rounded-lg overflow-hidden border border-[#00000010] ">
         <Vimeo
           video={vimeoId}
           responsive={true}

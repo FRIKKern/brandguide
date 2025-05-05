@@ -57,7 +57,7 @@ const VideoGrid: React.FC<VideoGridProps> = ({ node }) => {
           const key = video._key || `video-${index}-${video.url.substring(0, 20)}`;
           
           return (
-            <div key={key} className="relative rounded-lg shadow-md overflow-hidden">
+            <div key={key} className="relative rounded-lg border border-[#00000010]  overflow-hidden">
               <Video 
                 url={video.url}
               />

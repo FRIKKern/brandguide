@@ -132,7 +132,7 @@ const MapboxMapCover: React.FC<MapboxMapCoverProps> = ({
           theme === "dark"
             ? `
             <div
-              class="p-4 bg-gray-900 rounded-lg shadow-md text-sm font-sans space-y-2 text-gray-100"
+              class="p-4 bg-gray-900 rounded-lg border border-[#00000010]  text-sm font-sans space-y-2 text-gray-100"
               style="min-width: 200px;"
             >
               <p>

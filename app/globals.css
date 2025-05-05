@@ -1,59 +1,84 @@
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
 
+/* Add Aker Brygge Display Font */
+@font-face {
+  font-family: 'Aker Brygge Display';
+  src: url('/fonts/akerbryggedisplay-webfont.eot');
+  src: url('/fonts/akerbryggedisplay-webfont.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/akerbryggedisplay-webfont.woff2') format('woff2'),
+       url('/fonts/akerbryggedisplay-webfont.woff') format('woff'),
+       url('/fonts/akerbryggedisplay-webfont.ttf') format('truetype'),
+       url('/fonts/akerbryggedisplay-webfont.svg#aker_brygge_displayregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* Custom variants */
 @custom-variant dark (&:is(.dark *));
 @custom-variant group-in-view (.in-view &);
 
-
+/* Studio Pro-like system font stack for regular text */
 :root {
-  --background: hsl(0 0% 100%);
-  --foreground: hsl(224 71.4% 4.1%);
-  --card: hsl(0 0% 100%);
-  --card-foreground: hsl(224 71.4% 4.1%);
-  --popover: hsl(0 0% 100%);
-  --popover-foreground: hsl(224 71.4% 4.1%);
-  --primary: #D76B01;
-  --primary-foreground: hsl(210 20% 98%);
-  --secondary: hsl(220 14.3% 95.9%);
-  --secondary-foreground: hsl(220.9 39.3% 11%);
-  --muted: hsl(220 14.3% 95.9%);
-  --muted-foreground: hsl(220 8.9% 46.1%);
-  --accent: hsl(220 14.3% 95.9%);
-  --accent-foreground: hsl(220.9 39.3% 11%);
-  --destructive: hsl(0 84.2% 60.2%);
-  --destructive-foreground: hsl(210 20% 98%);
-  --border: hsl(220 13% 91%);
-  --input: hsl(220 13% 91%);
-  --ring: hsl(224 71.4% 4.1%);
-  --chart-1: hsl(12 76% 61%);
-  --chart-2: hsl(173 58% 39%);
-  --chart-3: hsl(197 37% 24%);
-  --chart-4: hsl(43 74% 66%);
-  --chart-5: hsl(27 87% 67%);
+  --font-studio-pro: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  
+  /* Aker Brygge Brand Colors - Primary Palette */
+  --color-sand: #EFE3D3;
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-blue: #3A66F8;
+  
+  /* Aker Brygge Brand Colors - Support Palette */
+  --color-orange: #DB5526;
+  --color-pink: #E94465;
+  --color-purple: #872EEC;
+  --color-green: #408F81;
+  --color-yellow: #DFBC50;
+  
+  /* Default theme colors using Aker Brygge palette */
+  --background: var(--color-sand);
+  --foreground: var(--color-black);
+  --card: var(--color-white);
+  --card-foreground: var(--color-black);
+  --popover: var(--color-white);
+  --popover-foreground: var(--color-black);
+  --primary: var(--color-blue);
+  --primary-foreground: var(--color-white);
+  --secondary: var(--color-sand);
+  --secondary-foreground: var(--color-black);
+  --muted: var(--color-sand);
+  --muted-foreground: var(--color-black);
+  --accent: var(--color-orange);
+  --accent-foreground: var(--color-white);
+  --destructive: var(--color-orange);
+  --destructive-foreground: var(--color-white);
+  --border: var(--color-black);
+  --input: var(--color-sand);
+  --ring: var(--color-blue);
+  
   --radius: 0.5rem;
 }
 .dark {
-  --background: hsl(224 71.4% 4.1%);
-  --foreground: hsl(210 20% 98%);
-  --card: hsl(224 71.4% 4.1%);
-  --card-foreground: hsl(210 20% 98%);
-  --popover: hsl(224 71.4% 4.1%);
-  --popover-foreground: hsl(210 20% 98%);
-  --primary: #D76B01,
-  --primary-foreground: hsl(220.9 39.3% 11%);
-  --secondary: hsl(215 27.9% 16.9%);
-  --secondary-foreground: hsl(210 20% 98%);
-  --muted: hsl(215 27.9% 16.9%);
-  --muted-foreground: hsl(217.9 10.6% 64.9%);
-  --accent: hsl(215 27.9% 16.9%);
-  --accent-foreground: hsl(210 20% 98%);
-  --destructive: hsl(0 62.8% 30.6%);
-  --destructive-foreground: hsl(210 20% 98%);
-  --border: hsl(215 27.9% 16.9%);
-  --input: hsl(215 27.9% 16.9%);
-  --ring: hsl(216 12.2% 83.9%);
+  --background: var(--color-black);
+  --foreground: var(--color-sand);
+  --card: var(--color-black);
+  --card-foreground: var(--color-white);
+  --popover: var(--color-black);
+  --popover-foreground: var(--color-white);
+  --primary: var(--color-blue);
+  --primary-foreground: var(--color-white);
+  --secondary: var(--color-blue);
+  --secondary-foreground: var(--color-white);
+  --muted: var(--color-blue);
+  --muted-foreground: var(--color-white);
+  --accent: var(--color-orange);
+  --accent-foreground: var(--color-white);
+  --destructive: var(--color-orange);
+  --destructive-foreground: var(--color-white);
+  --border: var(--color-sand);
+  --input: var(--color-blue);
+  --ring: var(--color-sand);
   --chart-1: hsl(220 70% 50%);
   --chart-2: hsl(160 60% 45%);
   --chart-3: hsl(30 80% 55%);
@@ -98,9 +123,9 @@
 /* Theme values (your design tokens) */
 @theme {
   /* Fonts */
-  --font-general: var(--font-general);
-  --font-title: var(--font-title);
-  --font-supplement: var(--font-supplement);
+  --font-general: var(--font-studio-pro);
+  --font-title: var(--font-aker-brygge);
+  --font-supplement: var(--font-studio-pro);
 
   /* Breakpoints (from your screens) */
   --breakpoint-xs: 480px;
@@ -161,9 +186,9 @@
   --color-card-foreground: var(--card-foreground);
 
   /* Font families (mapping your extended font families) */
-  --font-sans: var(--font-general);
-  --font-heading: var(--font-title);
-  --font-supplement: var(--font-supplement);
+  --font-sans: var(--font-studio-pro);
+  --font-heading: var(--font-aker-brygge);
+  --font-supplement: var(--font-studio-pro);
 
   /* Border radius */
   --radius-lg: var(--radius);
@@ -275,35 +300,45 @@
 /* Base styles (mapping your custom headings) */
 @layer base {
   h1 {
-    font-family: theme(--font-general);
+    font-family: theme(--font-title);
     font-size: 2.5rem;
     line-height: 1.2;
-    font-weight: bold;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: normal;
     @media (width >= theme(--breakpoint-md)) {
       font-size: 3.5rem;
     }
   }
   h2 {
-    font-family: theme(--font-general);
+    font-family: theme(--font-title);
     font-size: 2rem;
     line-height: 1.2;
-    font-weight: bold;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: normal;
     @media (width >= theme(--breakpoint-md)) {
       font-size: 2.5rem;
     }
   }
   h3 {
-    font-family: theme(--font-general);
+    font-family: theme(--font-title);
     font-size: 1.5rem;
     line-height: 1.2;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: normal;
     @media (width >= theme(--breakpoint-md)) {
       font-size: 2rem;
     }
   }
   h4 {
-    font-family: theme(--font-general);
+    font-family: theme(--font-title);
     font-size: 1.25rem;
     line-height: 1.3;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: normal;
     @media (width >= theme(--breakpoint-md)) {
       font-size: 1.5rem;
     }
@@ -312,6 +347,7 @@
     font-family: theme(--font-general);
     font-size: 1.125rem;
     line-height: 1.4;
+    font-weight: normal;
     @media (width >= theme(--breakpoint-md)) {
       font-size: 1.25rem;
     }
@@ -320,54 +356,75 @@
     font-family: theme(--font-general);
     font-size: 1rem;
     line-height: 1.4;
+    font-weight: normal;
     @media (width >= theme(--breakpoint-md)) {
       font-size: 1rem;
     }
-  
-
-
-
-
-    /* Optional utility classes for general and supplement fonts */
-    .general {
-      font-family: theme(--font-general);
-    }
-    .supplement {
-      font-family: theme(--font-supplement);
-    }
   }
   
-  p {
+  /* Optional utility classes for general and supplement fonts */
+  .general {
     font-family: theme(--font-general);
   }
-  
-  .scrollbar-hide {
-    scrollbar-width: none; /* Firefox */
-  }
-  
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .mapboxgl-ctrl-logo {
-    display: none !important;
-  }
-  
-  .mapboxgl-ctrl-attrib-inner {
-    display: none !important;
-  }
-  
-  .mapboxgl-popup-close-button {
-    display: none !important;
-  }
-  
-  
-  
-  [g] {
-    /* Ensure that the default transform uses the --default-x value */
-    transform: translateX(var(--default-x));
+  .supplement {
+    font-family: theme(--font-supplement);
   }
 }
+  
+p {
+  font-family: theme(--font-general);
+  font-size: 16px;
+  line-height: 1.6em;
+}
+  
+.body-small {
+  font-family: theme(--font-general);
+  font-size: 14px;
+  line-height: 1.6em;
+}
+  
+/* Subtitle classes following Aker Brygge brand guidelines */
+.subtitle-1 {
+  font-family: theme(--font-general);
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.4;
+}
+  
+.subtitle-2 {
+  font-family: theme(--font-general);
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 1.4;
+}
+  
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+}
+  
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+  
+.mapboxgl-ctrl-logo {
+  display: none !important;
+}
+  
+.mapboxgl-ctrl-attrib-inner {
+  display: none !important;
+}
+  
+.mapboxgl-popup-close-button {
+  display: none !important;
+}
+  
+  
+  
+[g] {
+  /* Ensure that the default transform uses the --default-x value */
+  transform: translateX(var(--default-x));
+}
+
 
 
 
@@ -381,8 +438,26 @@ img.sanity-image {
 /* smooth scroll */
 html {
   scroll-behavior: smooth;
+  font-family: var(--font-studio-pro);
+}
+
+
+.bg-background {
+  background-color: var(--color-sand);
 }
 
 body {
   scroll-behavior: smooth;
+  font-family: var(--font-studio-pro);
+  background-color: var(--color-sand);
+  color: var(--color-black);
+  font-weight: 300;
+}
+
+/* Style for title text to make it appear lighter */
+.title-text {
+  font-family: theme(--font-title);
+  font-weight: 300;
+  letter-spacing: normal;
+  text-transform: uppercase;
 }

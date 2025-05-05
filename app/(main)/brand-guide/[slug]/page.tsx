@@ -39,14 +39,14 @@ export default async function BrandGuide(props: {
   }
   
   return (
-    <section className="bg-white">
-      <div className="mx-auto py-16 px-4 sm:px-6 lg:px-8 xl:py-20">
+    <section className="bg-background">
+      <div className="mx-auto py-16 px-4 sm:px-6 lg:px-8 xl:py-20 max-w-7xl">
         {/* Main header above everything */}
         {post.title && (
           <header className="mb-12 text-left">
-            <h1 className="text-4xl font-bold mb-4 text-gray-900">{post.title}</h1>
+            <h1 className="mb-4 opacity-80">{post.title}</h1>
             {post.subtitle && (
-              <p className="text-xl text-gray-600 max-w-3xl">{post.subtitle}</p>
+              <p className="subtitle-1 text-primary max-w-3xl">{post.subtitle}</p>
             )}
           </header>
         )}
@@ -57,13 +57,13 @@ export default async function BrandGuide(props: {
             <Nav subPages={post.brandGuideline.subPage} />
           </div>
 
-          <div className="md:col-span-3 prose-lg max-w-none">
+          <div className="md:col-span-3 max-w-none">
             <BrandGuideContent subPages={post.brandGuideline.subPage} />
           </div>
         </div>
 
         {post.body && (
-          <div className=" border-t border-gray-200">
+          <div className="mt-16 border-t border-black pt-8">
             <PortableTextRenderer value={post.body} />
           </div>
         )}

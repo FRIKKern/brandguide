@@ -84,7 +84,7 @@ const ImageGrid: React.FC<ImageGridProps> = ({ node }) => {
           
           // For images in grid, we render directly
           return (
-            <div key={key} className="relative overflow-hidden rounded-lg shadow-md">
+            <div key={key} className="relative overflow-hidden rounded-lg border border-[#00000010] ">
               <img
                 src={imageUrl}
                 alt={altText}
