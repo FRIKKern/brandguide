@@ -49,6 +49,34 @@ const akerBryggeFont = localFont({
   display: 'swap',
 });
 
+// Import Studio Pro font for body text
+const studioProFont = localFont({
+  src: [
+    {
+      path: '../public/fonts/studio_pro_regular-webfont.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/studio_pro_regular-webfont.woff',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/studio_pro_semibold-webfont.woff2',
+      weight: '600',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/studio_pro_semibold-webfont.woff',
+      weight: '600',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-studio-pro',
+  display: 'swap',
+});
+
 export default function RootLayout({
   children,
 }: {
@@ -61,7 +89,8 @@ export default function RootLayout({
         <body
           className={cn(
             "min-h-screen bg-background font-sans antialiased overscroll-none",
-            akerBryggeFont.variable
+            akerBryggeFont.variable,
+            studioProFont.variable
           )}
         >
           {/* Render the main page content */}

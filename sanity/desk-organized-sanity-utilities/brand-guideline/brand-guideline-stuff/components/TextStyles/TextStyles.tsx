@@ -22,6 +22,37 @@ interface TextStylesContainerProps {
   };
 }
 
+// Map font family names to actual CSS font families
+const getFontFamily = (fontFamily: string): string => {
+  if (fontFamily.toLowerCase().includes('aker') || fontFamily.toLowerCase().includes('display')) {
+    return "'Aker Brygge Display', serif";
+  }
+  if (fontFamily.toLowerCase().includes('studio') || fontFamily.toLowerCase().includes('pro')) {
+    return "'Studio Pro', sans-serif";
+  }
+  return fontFamily; // fallback to what was provided
+};
+
+// Map font weights to actual CSS font weights per brand guidelines
+const getFontWeight = (name: string, weight: string | number): string | number => {
+  // For Aker Brygge Display headings
+  if (name.startsWith('Heading') && (name === 'Heading 1' || name === 'Heading 2' || name === 'Heading 3' || name === 'Heading 4')) {
+    return 300; // Light weight for Aker Brygge Display headings
+  }
+  
+  // For Studio Pro subtitles
+  if (name.startsWith('Subtitle')) {
+    return 600; // Semibold for subtitles per brand guide
+  }
+  
+  // For other text using Studio Pro
+  if (name.includes('Body') || name.includes('Button') || name.includes('Caption')) {
+    return weight === 'bold' ? 600 : 400; // Map bold to semibold (600), normal to regular (400)
+  }
+  
+  return weight; // Default
+};
+
 // Internal component to render a single text style example
 const TextStyleDisplay: React.FC<TextStyleProps> = ({
   name,
@@ -52,13 +83,22 @@ const TextStyleDisplay: React.FC<TextStyleProps> = ({
   const numberOfLines = fontSize < 24 ? 4 : 2;
   const maxHeight = ((fontSize * fontLineHeight) / 100) * numberOfLines;
 
+  // Get actual font family and weight based on brand guidelines
+  const actualFontFamily = getFontFamily(fontFamily);
+  const actualFontWeight = getFontWeight(name, fontWeight);
+  
+  // Apply text transform for Aker Brygge headings
+  const isAkerBryggeHeading = (name === 'Heading 1' || name === 'Heading 2' || name === 'Heading 3' || name === 'Heading 4') 
+    && actualFontFamily.includes('Aker Brygge');
+  
   // Inline styles for the text example
   const textStyle = {
-    fontFamily,
+    fontFamily: actualFontFamily,
     fontSize: `${fontSize}px`,
-    fontWeight,
+    fontWeight: actualFontWeight,
     lineHeight: `${fontLineHeight}%`,
-    letterSpacing: fontLetterSpacing ? `${fontLetterSpacing}%` : 'normal',
+    letterSpacing: isAkerBryggeHeading ? 'normal' : (fontLetterSpacing ? `${fontLetterSpacing}%` : 'normal'),
+    textTransform: isAkerBryggeHeading ? 'uppercase' : 'none',
     fontFeatureSettings: ligatures ? '' : '' , // Add ligature settings if needed, e.g., 'liga off', 'clig off'
     maxHeight: `${maxHeight}px`,
   };
@@ -91,7 +131,11 @@ const TextStyleDisplay: React.FC<TextStyleProps> = ({
           )}
           <div className={textValuesItemClasses}>
             <Icon icon="textStyle" size={16} /> {/* Removed className */}
-            <span>{fontWeight}</span>
+            <span>{actualFontWeight}</span>
+          </div>
+          <div className={textValuesItemClasses}>
+            <Icon icon="textStyle" size={16} /> {/* Removed className */}
+            <span>{actualFontFamily}</span>
           </div>
           {ligatures && (
             <div className={textValuesItemClasses}>
