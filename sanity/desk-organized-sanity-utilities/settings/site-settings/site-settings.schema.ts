@@ -1,5 +1,3 @@
-
-
 import { referenceField } from "@/sanity/type-organized-schemas/generator-fields/reference.field";
 import { Globe } from "lucide-react";
 import { defineField, defineType } from "sanity";
@@ -15,7 +13,7 @@ export const siteSettingsSchema = defineType({
     referenceField({
       name: "frontPage",
       title: "Forside",
-      to: [{ type: "page-slug" }],
+      to: [{ type: "page-slug" }, { type: "brand-guide-slug" }],
       required: true,
     }),
 
